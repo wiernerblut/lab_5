@@ -1,10 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('Lint') {
+        stage('Build') {
+            when {
+                branch 'main'
+            }
             steps {
-                sh 'npm install'
-                sh 'eslint index.js || true'
+                sh 'echo Building on main branch'
+            }
+        }
+        stage('Test') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                sh 'echo Testing on dev branch'
             }
         }
     }
