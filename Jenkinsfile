@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Print Branch Info') {
+            steps {
+                sh 'echo Current branch is $BRANCH_NAME'
+            }
+        }
         stage('Build') {
             when {
                 branch 'main'
